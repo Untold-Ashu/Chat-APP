@@ -15,13 +15,13 @@ app.use(express.json());
 const PORT= process.env.PORT||5000;
 
 app.get("/",(req,res)=>{
-    res.send("nodemon installed!")
+    res.send("server is running")
 })
 app.use('/api/auth',authRoute);
 app.use('/api/messages',messageRoutes);
 app.use('/api/users',userRoutes);// for Users shown on Sidebar
 
 app.listen(PORT,()=>{
-    connectToMongoDB();
+    connectToMongoDB(process.env.MONGO_DB_URI);
     console.log(`server is running on port ${PORT}`)
 });

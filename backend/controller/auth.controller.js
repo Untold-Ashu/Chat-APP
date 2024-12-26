@@ -24,6 +24,7 @@ export const signup = async (req,res)=>{
 
     const boyProfilepic=`https://avatar.iran.liara.run/public/boy?username=${username}`;
     const girlProfilepic=`https://avatar.iran.liara.run/public/girl?username=${username}`;
+
     const newUser=new User({
         fullname:fullname,  
         username:username,
@@ -45,7 +46,7 @@ export const signup = async (req,res)=>{
         })
     }
     else{
-        restart.status(400).json({error:"Inavlid User Data"})
+        res.status(400).json({error:"Invalid User Data"})
     }
 
    
