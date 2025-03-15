@@ -1,6 +1,9 @@
 import Conversation from "../Models/conversation.model.js";
 import Message from "../Models/message.model.js";
 import User from "../Models/user.models.js";
+
+
+
 export const sendMessage=async (req,res)=>{
 try {
     const {message}=req.body;
@@ -25,11 +28,9 @@ try {
 
     }
 
-//SOCKET.IO FUNCTIONALITY GO HERE!!
+    //SOCKET
 
-    //this method takes long and we can optimize it by
-    // await conversation.save();
-    // await newMessage.save();
+
     await Promise.all([conversation.save(),newMessage.save()]);
     res.status(201).json(newMessage)
     
