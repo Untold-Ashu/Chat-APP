@@ -1,6 +1,7 @@
 import Conversation from "../Models/conversation.model.js";
 import Message from "../Models/message.model.js";
 import User from "../Models/user.models.js";
+import { getReceivedSocketId, io } from "../socket/socket.js";
 
 
 
@@ -22,6 +23,7 @@ try {
         senderId,
         receiverId,
         message,
+        createdAt:new Date()
     })
     if(newMessage){
         conversation.messages.push(newMessage._id);
@@ -29,6 +31,10 @@ try {
     }
 
     //SOCKET
+    const receiverSocketId = getReceivedSocketId(receiverId);
+    if(receiverSocketId){
+        io.to(receiverSocketId).emit("newMessage",newMessage); 
+    }
 
 
     await Promise.all([conversation.save(),newMessage.save()]);
