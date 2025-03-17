@@ -3,7 +3,7 @@ import { Route, Routes,Navigate } from 'react-router-dom';
 import "./App.css";
 import { useAuthContext } from "./context/AuthContext.jsx";
 import Home from "./pages/home/home.jsx";
-import Login from './pages/login/Login.jsx';
+import Login from './pages/Login/Login.jsx';
 import SignUp from "./pages/SignUp/SignUp.jsx";
 function App() {
   const {authUser}=useAuthContext();
