@@ -1,3 +1,5 @@
+import daisyui from "daisyui"; // ✅ Use import instead of require
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -7,7 +9,5 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [
-    require('daisyui'),
-  ],
-}
+  plugins: [daisyui], // ✅ Use imported module
+};
